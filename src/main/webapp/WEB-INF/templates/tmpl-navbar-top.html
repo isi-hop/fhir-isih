@@ -10,7 +10,7 @@
          th:href="'resource?encoding=' + ${encoding} + '&amp;pretty=' + ${pretty} + '&amp;resource=' + ${resourceName}">
          <i class="fas fa-broom" style="color: #F88;"></i>
          <span th:text="${resourceName}"></span>
-         Resource
+         Ressource
       </a>
       <a class="navbar-brand" th:href="'home?encoding=' + ${encoding} + '&amp;pretty=' + ${pretty}" th:unless="${resourceName} != null and ${resourceName.empty} == false">
          <span class="fa fa-home topbarIcon"></span> Home
