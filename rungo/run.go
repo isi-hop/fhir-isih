@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	running("run.bat", "")
+	running("/bin/sh","./r.d")
 
 }
 

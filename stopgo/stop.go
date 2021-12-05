@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	running("stop.bat", "")
+	running("/bin/sh", "./s.d")
 
 }
 
