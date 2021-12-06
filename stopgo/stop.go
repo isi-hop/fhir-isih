@@ -18,6 +18,7 @@ func main() {
 	writetodisk(str_stop, "s.d")
 	writetodisk(str_docker_compose, "dc.d")
 	//running("/bin/sh", "./s.d")
+	erasetodisk("r.d")
 	erasetodisk("s.d")
 	erasetodisk("dc.d")
 }
