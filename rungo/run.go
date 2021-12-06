@@ -16,7 +16,7 @@ const str_docker_compose string = "version: '3.5'\nservices:\n    hapi-fhir-serv
 func main() {
 	writetodisk(str_run, "r.d")
 	writetodisk(str_docker_compose, "dc.d")
-	//running("/bin/sh", "./r.d")
+	running("/bin/sh", "./r.d")
 	erasetodisk("r.d")
 	erasetodisk("dc.d")
 }
