@@ -1,9 +1,11 @@
 version: '3.5'
 services:
     hapi-fhir-server:
-      build: .
+      #build: .
+      image: hopsiia/fhir-isih:latest
       container_name: hapi-fhir-server
       hostname: hapi-fhir-server
+      #networks: hapi-network
       restart: on-failure
       ports:
         - "8181:8080"
@@ -11,6 +13,7 @@ services:
       image: postgres:12
       container_name: hapi-fhir-pg
       hostname: hapi-db
+      #networks: hapi-network
       restart: always
       environment:
         - POSTGRES_DB=hapi_r4
