@@ -17,19 +17,20 @@ func main() {
 	message()
 	writetodisk(str_run, "r.d")
 	writetodisk(str_docker_compose, "dc.d")
-	//running("/bin/sh", "./r.d")
+	running("/bin/sh", "./r.d")
 	erasetodisk("r.d")
 	erasetodisk("dc.d")
 }
 
 func message() {
-	var str_message string = `==============================
-	                          Lancement du serveur FHIR-ISIH
-	                          Le premier lancement, peut 
-							  prendre entre 2 et 6 minutes 
-							  selon votre configuration et 
-							  connexion internet disponible.
-							  ==============================`
+	var str_message string = `
+==============================
+Lancement du serveur FHIR-ISIH
+Le premier lancement, peut 
+prendre entre 2 et 6 minutes 
+selon votre configuration et 
+connexion internet disponible.
+==============================`
 
 	fmt.Println(str_message)
 }

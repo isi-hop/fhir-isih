@@ -17,8 +17,12 @@ func main() {
 	message()
 	writetodisk(str_stop, "s.d")
 	writetodisk(str_docker_compose, "dc.d")
+<<<<<<< HEAD
 	//running("/bin/sh", "./s.d")
 	erasetodisk("r.d")
+=======
+	running("/bin/sh", "./s.d")
+>>>>>>> f7816b49352055c732417857c33f2af640b2dd24
 	erasetodisk("s.d")
 	erasetodisk("dc.d")
 }
@@ -60,9 +64,10 @@ func copyOutput(r io.Reader) {
 }
 
 func message() {
-	var str_message string = `==============================
-	                          Arret du serveur FHIR-ISIH
-							  ==============================`
+	var str_message string = `
+==============================
+ Arret du serveur FHIR-ISIH
+==============================`
 
 	fmt.Println(str_message)
 }
