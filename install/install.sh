@@ -9,10 +9,15 @@ HOSTNAME=$(hostname)
 #definir le dossier d'installation 
 INSTALLPATH=$(dirname $PWD)
 
+if [ -d "$INSTALLPATH/pgdatafhir" ]
+then
+		echo "La solution est déja installée"
+        exit 1
+fi
+
 #mettre a jour la distrib avant toutes actions...
 echo "****************************"
-echo "*   Mise à jour de l'OS    *"
-echo "*   et des applications    *"
+echo "*  INSTALLATION FHIR-ISIH  *"
 echo "* mot de passe SUDO requis *"
 echo "****************************"
 sudo apt update
@@ -76,6 +81,9 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 sudo systemctl restart docker
 
+chmod u+x ./run
+chmod u+x ./stop
+
 echo "********************************************"
 echo "FIN DE L INSTALLATION-REBOOT NECESSAIRE"
 echo " HOSTNAME = $HOSTNAME"
@@ -86,7 +94,7 @@ echo "********************************************"
 
 #pause
 echo " "
-echo "Reboot su serveur"
+echo "Reboot du serveur"
 echo " "
 echo "############################################################"
 read -p "Appuyer sur la touche ENTREE pour continuer " REPLY
