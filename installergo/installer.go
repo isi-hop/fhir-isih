@@ -11,6 +11,7 @@ import (
 )
 
 const strInfo string = "Hello installer\nnouvelle ligne"
+const str_install string = "apt-get update\napt-get -y upgrade\napt-get -y install docker-compose"
 
 func main() {
 
@@ -18,21 +19,20 @@ func main() {
 	//doit être une ubuntu version >= 20.04 LTS
 	instmemory.MemoryShow()
 
-	if !instmemory.Arch_test("windows") {
+	if !instmemory.Arch_test("linux") {
 		fmt.Println("Le système ne correspond pas a un système Linux Compatible...")
 		os.Exit(1)
 	}
 
 	//installer docker
+	writetodisk(str_install,"i_inst")
+	running("/bin/sh","./i_inst")
+	erasetodisk("i_inst")
+
 	//download script docker
 	writetodisk(download("https://get.docker.com"), "d_inst")
 	running("/bin/sh", "./d_inst")
 	erasetodisk("d_inst")
-
-	//installer docker compose
-	running("sudo apt", "install docker-compose")
-
-	//copier les fichiers d'installations (docker-compose.yaml, runner, stopper)
 
 	//afficher mode de lancement...
 	fmt.Println(strInfo)
@@ -55,7 +55,7 @@ func erasetodisk(s string) {
 *******************************/
 func running(commande string, arguments string) {
 	cmd := exec.Command(commande, arguments)
-	log.Printf("Running command and waiting for it to finish...")
+	log.Printf("Running command %s %s and waiting for it to finish...",commande, arguments)
 	err := cmd.Run()
 	if err == nil {
 		log.Printf("Command finished with no error")
