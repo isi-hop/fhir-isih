@@ -68,7 +68,7 @@
 								
 									<div class="row">
                               <div class="col-12">
-   										Retrieve the server's <b>conformance</b> statement.
+								Récupérez les <b>conformance</b> du serveur.
                               </div>
 									</div>
 								    <div class="row">
@@ -93,8 +93,7 @@
 									<br clear="all"/>
 									<div class="row">
                               <div class="col-12">
-                                 Retrieve the update <b>history</b> across all resource types on
-                                 the server.
+								Récupérez la mise à jour <b>''history''</b> sur tous les types de ressources sur le serveur.
                               </div>
 									</div>
 								    <div class="row top-buffer">
@@ -160,8 +159,7 @@
 									<br clear="all"/>
 									<div class="row">
                               <div class="col-12">
-                                 Post a bundle containing multiple resources to the server and
-                                 store all resources within a single atomic transaction.
+								Publiez un 'bundle' contenant plusieurs ressources sur le serveur et stockez toutes les ressources en une seule transaction atomique.
                               </div>
 									</div>
 								    <div class="row">
@@ -180,7 +178,7 @@
 								                           <span class="loadingStar">*</span>
                                                </span>
 								                    </div>
-								                    <textarea class="form-control" id="transaction-body" style="white-space: nowrap; overflow: auto;" placeholder="(place transaction bundle body here)" rows="1"><th:block th:if="${transactionBundle} != null" th:text="${transactionBundle}"/></textarea>
+								                    <textarea class="form-control" id="transaction-body" style="white-space: nowrap; overflow: auto;" placeholder="(placer le corps du bundle de la transaction ici)" rows="1"><th:block th:if="${transactionBundle} != null" th:text="${transactionBundle}"/></textarea>
 								                </div>
 								            </div>
 								        </div>											

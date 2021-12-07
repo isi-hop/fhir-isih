@@ -26,7 +26,7 @@
 					<!-- *************************************************** -->
 					<div class="card" id="resultWell">
                   <div class="card-header">
-                     Executed request against FHIR RESTful server in
+					Requête exécutée sur le serveur FHIR RESTful en
                      <th:block th:text="${latencyMs} + 'ms'"/>
                   </div>
 					</div>
@@ -35,8 +35,7 @@
 						<div class="card-header">
 							Client Code - 
 							<small style="color: #888;">
-								Use the following code snippet to execute this action in your
-								own client.
+								Utilisez l’extrait de code suivant pour exécuter cette action dans votre propre client.
 							</small>
 						</div>
 						<div class="card-body clientCodeBox" id="clientCodeBody">
@@ -60,7 +59,7 @@
 								<tr>
 									<td style="white-space: nowrap;">
                               <i class="fas fa-chevron-right"></i>
-										Request
+										Requête
 									</td>
 									<td>
 										<th:block th:text="${action}"/>
@@ -68,7 +67,7 @@
 									</td>
 								</tr>
 								<tr th:if="${requestHeaders.length} > 0">
-									<td>Request Headers</td>
+									<td>Entêtes de la requête</td>
 									<td class="headerBox">
 										<div th:each="header : ${requestHeaders}">
 											<span class="headerName" th:text="${header.name} + ': '"/>
@@ -82,7 +81,7 @@
 									</td>
 								</tr>
 								<tr th:if="${#strings.isEmpty(requestBody)} == false">
-									<td>Request Body</td>
+									<td>Corps de la demande</td>
 									<td valign="top" style="margin: 0px; padding: 0px;">
 										<pre class="requestBodyPre resultBodyPlaceholder" id="requestBodyPlaceholder">...loading...</pre>
 										<pre th:utext="${requestBody}" class="resultBodyPre pre" id="requestBodyActual" style="display: none;">{}</pre>
@@ -100,7 +99,7 @@
 								<tr>
 									<td style="white-space: nowrap;">
                               <i class="fas fa-chevron-left"></i>
-										Response
+										Réponse
 									</td>
 									<td>
 										<i th:if="${resultStatus.contains(' 2')}" class="fa fa-check" style="color:#4E4;"></i>
@@ -109,7 +108,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td>Response Headers</td>
+									<td>Entêtes de la Réponse</td>
 									<td class="headerBox">
 										<div th:each="header : ${responseHeaders}">
 											<span class="headerName" th:text="${header.name} + ': '"/>
@@ -119,7 +118,7 @@
 								</tr>
 								<tr th:if="${!#strings.isEmpty(resultBody)}">
 									<td rowspan="2">
-										Result Body
+										Corps de la réponse
 										<small th:text="${resultDescription}" style="font-weight: normal;"/>
 									</td>
 									<td style="border-width: 0px; padding: 0px;">
@@ -247,7 +246,7 @@
 											<div class="panel panel-default" style="border: none; border-bottom: 1px solid #ddd; border-radius: 0px;">
 												<div class="panel-heading">
 													<div class="panel-title">
-														<th:block th:if="${#lists.isEmpty(riBundle.entry)}">Bundle contains no entries</th:block>
+														<th:block th:if="${#lists.isEmpty(riBundle.entry)}">Le bundle ne contient aucune entrée</th:block>
 														<a th:unless="${#lists.isEmpty(riBundle.entry)}" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
                                              <i id="collapseOneIcon" class="far fa-minus-square"></i>
 															<span th:if="${riBundle.totalElement.empty}" th:text="'Bundle contains ' + ${#lists.size(riBundle.entry)} + ' entries'"/>
@@ -368,7 +367,7 @@
 									</td>
 								</tr>
 								<tr th:if="${!#strings.isEmpty(narrative)}">
-									<td class="propertyKeyCell">Result Narrative</td>
+									<td class="propertyKeyCell">Récit des résultats</td>
 									<td th:utext="${narrative}"></td>
 								</tr>
 							</tbody>
