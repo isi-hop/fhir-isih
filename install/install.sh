@@ -71,11 +71,6 @@ then
 sudo apt -y install docker-compose
 fi
 
-echo "**********************"
-echo "* Positionnement des *"
-echo "* droits pour Docker *"
-echo "* et Docker-compose  *"
-echo "**********************"
 #ajouter les droits pour l'utilisateur
 sudo groupadd docker
 sudo usermod -aG docker $USER
