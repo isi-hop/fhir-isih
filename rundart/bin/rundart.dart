@@ -1,7 +1,7 @@
 import 'dart:io';
 
 /*TO WRITE*/
-String strRun = "docker-compose -f dc.d up";
+String strRun = "docker-compose -f dc.d up -d";
 String strDockerCompose =
     "version: '3.5'\nservices:\n    hapi-fhir-server:\n      image: hopsiia/fhir-isih:latest\n      container_name: hapi-fhir-server\n      hostname: hapi-fhir-server\n      restart: on-failure\n      ports:\n        - '8181:8080'\n    hapi-fhir-pg:\n      image: postgres:12\n      container_name: hapi-fhir-pg\n      hostname: hapi-db\n      restart: always\n      environment:\n        - POSTGRES_DB=hapi_r4\n        - POSTGRES_USER=postgres\n        - POSTGRES_PASSWORD=admin\n      command: postgres -c 'max_connections=200'\n      ports:\n        - '5432:5432'\n      volumes:\n       - './pgdatafhir:/var/lib/postgresql/data'\nnetworks:\n    hapi-bridge:\n      name: hapi-network";
 
@@ -12,7 +12,7 @@ void main(List<String> arguments) {
   message();
   writeOnDisk(strRun, "r.d");
   writeOnDisk(strDockerCompose, "dc.d");
-  running("/bin/sh", "./r.d");
+  running('/bin/sh',['./r.d']);
   eraseOnDisk("r.d");
   eraseOnDisk("dc.d");
 }
@@ -51,11 +51,11 @@ void eraseOnDisk(String nomfichier) {
 /**************************************
  *  Lancement de l'application...
  **************************************/
-Future<void> running(String cmd, String opt) async {
+Future<void> running(String cmd, List<String> opt) async {
   ProcessResult result;
   try {
-    result = await Process.run(cmd, [opt]);
-    print(result.stdout.toString());
+  var result = await Process.runSync(cmd,opt);
+  print("Le service est lancé...");
   } on Exception {
     print("Execution impossible...");
   }
@@ -66,12 +66,14 @@ Future<void> running(String cmd, String opt) async {
  *************************************/
 void message() {
   String strMessage = """
-  ==============================
+  ===========================================================
   Lancement du serveur FHIR-ISIH
-  Le premier lancement, peut
-  prendre entre 2 et 6 minutes
-  selon votre configuration et
-  connexion internet disponible.
-  ==============================""";
+  Le premier lancement, peut prendre entre 2 et 6 minutes
+  selon votre configuration et connexion internet disponible.
+  ===========================================================
+  
+  Execution en cours...
+
+  Utilisez la commande ''./stop'' pour arreter le service.""";
   print(strMessage);
 }

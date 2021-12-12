@@ -12,8 +12,8 @@ void main(List<String> arguments) {
   message();
   writeOnDisk(strStop, "s.d");
   writeOnDisk(strDockerCompose, "dc.d");
-  eraseOnDisk("r.d");
-  running("/bin/sh", "./s.d");
+  //eraseOnDisk("r.d");
+  running('/bin/sh', ['./s.d']);
   eraseOnDisk("s.d");
   eraseOnDisk("dc.d");
 }
@@ -52,11 +52,11 @@ void eraseOnDisk(String nomfichier) {
 /**************************************
  *  Lancement de l'application...
  **************************************/
-Future<void> running(String cmd, String opt) async {
+Future<void> running(String cmd, List<String> opt) async {
   ProcessResult result;
   try {
-    result = await Process.run(cmd, [opt]);
-    print(result.stdout.toString());
+    result = await Process.runSync(cmd, opt);
+    print("Service arreté...");
   } on Exception {
     print("Execution impossible...");
   }
